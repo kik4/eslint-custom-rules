@@ -1,9 +1,6 @@
 "use strict";
 
 module.exports = {
-  meta: {
-    schema: []
-  },
   create: function(context) {
     return {
       Literal: function(node) {
