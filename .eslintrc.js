@@ -1,5 +1,5 @@
-const rulesDirPlugin = require('eslint-plugin-rulesdir');
-rulesDirPlugin.RULES_DIR = 'rules';
+const rulesDirPlugin = require("eslint-plugin-rulesdir");
+rulesDirPlugin.RULES_DIR = "rules";
 
 module.exports = {
   env: {
@@ -10,8 +10,8 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 2018
   },
-  plugins: [
-    'rulesdir'
-  ],
-  rules: { "rulesdir/kimahri-not-pass": "error" }
+  plugins: ["rulesdir"],
+  rules: {
+    "rulesdir/kimahri-not-pass": "error"
+  }
 };

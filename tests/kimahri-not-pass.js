@@ -10,11 +10,7 @@ const tester = new RuleTester({
 });
 
 tester.run("kiomahri-not-pass", rule, {
-  valid: [
-    { code: '1' },
-    { code: '"召喚士"' },
-    { code: '"ガード"' }
-  ],
+  valid: [{ code: "1" }, { code: '"召喚士"' }, { code: '"ガード"' }],
   invalid: [
     { code: '"キマリ"', errors: ["キマリは通さない"] },
     { code: 'const a = "「キマリは通さない」"', errors: ["キマリは通さない"] }
