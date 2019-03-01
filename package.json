@@ -1,0 +1,15 @@
+{
+  "name": "eslint-custom-rules",
+  "version": "1.0.0",
+  "main": "index.js",
+  "author": "kik4 <kik4.contact@gmail.com>",
+  "license": "MIT",
+  "dependencies": {
+    "eslint": "^5.14.1",
+    "mocha": "^6.0.2"
+  },
+  "scripts": {
+    "test": "mocha \"tests/**/*.js\"",
+    "lint": "eslint ./src --rulesdir ./rules"
+  }
+}
