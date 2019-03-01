@@ -12,6 +12,7 @@ module.exports = {
   },
   plugins: ["rulesdir"],
   rules: {
-    "rulesdir/kimahri-not-pass": "error"
+    "rulesdir/kimahri-not-pass": "error",
+    "rulesdir/same-order-object-keys": "error"
   }
 };
