@@ -11,7 +11,7 @@
     "prettier": "^1.16.4"
   },
   "scripts": {
-    "test": "mocha \"tests/**/*.js\"",
+    "test": "mocha \"tests/**/*.js\" --reporter dot",
     "lint": "eslint ./src",
     "format": "prettier --write \"**/*.js\""
   }
