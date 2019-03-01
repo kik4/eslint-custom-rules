@@ -29,7 +29,8 @@ const a = {
     }
   }
 }
-    `
+    `,
+      options: [{ checkKey: "sameOrder" }]
     }
   ],
   invalid: [
@@ -53,6 +54,7 @@ const a = {
   }
 }
     `,
+      options: [{ checkKey: "sameOrder" }],
       errors: ["違うよ"]
     },
     {
@@ -76,6 +78,7 @@ const b = {
   }
 };      
     `,
+      options: [{ checkKey: "sameOrder" }],
       errors: ["違うよ"]
     }
   ]

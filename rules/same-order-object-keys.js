@@ -40,13 +40,25 @@ const isSamePropKeys = (src, dst) => {
 
 module.exports = {
   meta: {
-    schema: [] // no options
+    schema: [
+      {
+        type: "object",
+        properties: {
+          checkKey: {
+            type: "string"
+          }
+        },
+        required: ["checkKey"],
+        additionalProperties: false
+      }
+    ]
   },
   create: function(context) {
     return {
       ObjectExpression: function(node) {
         node.properties.forEach(prop => {
-          if (getPropKeyValueOrName(prop) !== "sameOrder") return;
+          if (getPropKeyValueOrName(prop) !== context.options[0].checkKey)
+            return;
           if (prop.value.type !== "ObjectExpression") return;
 
           const props = prop.value.properties;

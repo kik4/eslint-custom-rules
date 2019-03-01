@@ -13,6 +13,6 @@ module.exports = {
   plugins: ["rulesdir"],
   rules: {
     "rulesdir/kimahri-not-pass": "error",
-    "rulesdir/same-order-object-keys": "error"
+    "rulesdir/same-order-object-keys": ["error", { checkKey: "sameOrder" }]
   }
 };
