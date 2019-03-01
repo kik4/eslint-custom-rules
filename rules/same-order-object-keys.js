@@ -6,26 +6,21 @@ const checkSamePropKeysRecursive = (context, src, dst) => {
   if (src.type !== "ObjectExpression" && dst.type !== "ObjectExpression") {
     return;
   }
-  if (src.type === dst.type) {
-    if (!isSamePropKeys(src, dst)) {
-      context.report({
-        node: dst,
-        message: "違うよ"
-      });
-    } else {
-      for (let j = 0; j < src.properties.length; j++) {
-        checkSamePropKeysRecursive(
-          context,
-          src.properties[j].value,
-          dst.properties[j].value
-        );
-      }
-    }
-  } else {
+
+  if (src.type !== dst.type || !isSamePropKeys(src, dst)) {
     context.report({
       node: dst,
       message: "違うよ"
     });
+    return;
+  }
+
+  for (let j = 0; j < src.properties.length; j++) {
+    checkSamePropKeysRecursive(
+      context,
+      src.properties[j].value,
+      dst.properties[j].value
+    );
   }
 };
 
