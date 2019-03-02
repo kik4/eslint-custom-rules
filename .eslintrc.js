@@ -5,9 +5,9 @@ module.exports = {
   parserOptions: {
     ecmaVersion: 6
   },
-  plugins: ["rulesdir"],
+  plugins: ["rulesdir", "kimahri"],
   rules: {
-    "rulesdir/kimahri-not-pass": "error",
-    "rulesdir/same-order-object-keys": ["error", { checkKey: "sameOrder" }]
+    "rulesdir/same-order-object-keys": ["error", { checkKey: "sameOrder" }],
+    "kimahri/not-pass": "error"
   }
 };
