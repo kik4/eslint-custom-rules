@@ -1,7 +1,7 @@
 "use strict";
 
 const RuleTester = require("eslint").RuleTester;
-const rule = require("../rules/same-order-object-keys");
+const rule = require("../dist/same-order-object-keys");
 
 const tester = new RuleTester({
   parserOptions: {

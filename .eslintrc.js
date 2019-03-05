@@ -1,9 +1,9 @@
 const rulesDirPlugin = require("eslint-plugin-rulesdir");
-rulesDirPlugin.RULES_DIR = "rules";
+rulesDirPlugin.RULES_DIR = "dist";
 
 module.exports = {
   parserOptions: {
-    ecmaVersion: 6
+    ecmaVersion: 8
   },
   plugins: ["rulesdir"],
   rules: {

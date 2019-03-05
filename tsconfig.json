@@ -1,0 +1,14 @@
+{
+  "compilerOptions": {
+    "outDir": "./dist",
+    "rootDir": "./rules",
+    "module": "commonjs",
+    "target": "es2017",
+    "noUnusedLocals": true,
+    "noUnusedParameters": true,
+    "declaration": true,
+    "alwaysStrict": true
+  },
+  "include": ["rules/**/*"],
+  "exclude": ["node_modules"]
+}
