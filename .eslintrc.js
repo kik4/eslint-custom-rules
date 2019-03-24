@@ -7,6 +7,6 @@ module.exports = {
   },
   plugins: ["rulesdir"],
   rules: {
-    "rulesdir/same-order-object-keys": ["error", { checkKey: "sameOrder" }],
+    "rulesdir/same-order-object-keys": ["error", { checkKey: "sameOrder" }]
   }
 };
