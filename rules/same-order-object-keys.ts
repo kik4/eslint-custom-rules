@@ -24,7 +24,7 @@ const checkSamePropKeysRecursive = (
     });
     return;
   }
-  
+
   if (src.type === "ObjectExpression" && dst.type === "ObjectExpression") {
     if (!isSamePropKeys(src, dst)) {
       context.report({
@@ -42,7 +42,6 @@ const checkSamePropKeysRecursive = (
       );
     }
   }
-
 };
 
 const isSamePropKeys = (
@@ -82,16 +81,20 @@ const rule: Rule.RuleModule = {
       ObjectExpression: (node: estree.Node) => {
         const expression = node as estree.ObjectExpression;
         expression.properties.forEach(prop => {
+          // 開始キーを待つ
           if (getPropKeyValueOrName(prop) !== context.options[0].checkKey)
             return;
+
+          // 開始キーの下は object である
           if (prop.value.type !== "ObjectExpression") return;
+          const childProps = prop.value.properties;
+          // プロパティは 2 以上 である
+          if (childProps.length <= 1) return;
 
-          const props = prop.value.properties;
-          if (props.length <= 1) return;
-
-          const src = props[0].value;
-          for (let i = 1; i < props.length; i++) {
-            const dst = props[i].value;
+          // 1 つ目のプロパティと2つ目以降を順番に比較していく
+          const src = childProps[0].value;
+          for (let i = 1; i < childProps.length; i++) {
+            const dst = childProps[i].value;
             checkSamePropKeysRecursive(context, src, dst);
           }
         });

@@ -61,16 +61,20 @@ const rule = {
             ObjectExpression: (node) => {
                 const expression = node;
                 expression.properties.forEach(prop => {
+                    // 開始キーを待つ
                     if (getPropKeyValueOrName(prop) !== context.options[0].checkKey)
                         return;
+                    // 開始キーの下は object である
                     if (prop.value.type !== "ObjectExpression")
                         return;
-                    const props = prop.value.properties;
-                    if (props.length <= 1)
+                    const childProps = prop.value.properties;
+                    // プロパティは 2 以上 である
+                    if (childProps.length <= 1)
                         return;
-                    const src = props[0].value;
-                    for (let i = 1; i < props.length; i++) {
-                        const dst = props[i].value;
+                    // 1 つ目のプロパティと2つ目以降を順番に比較していく
+                    const src = childProps[0].value;
+                    for (let i = 1; i < childProps.length; i++) {
+                        const dst = childProps[i].value;
                         checkSamePropKeysRecursive(context, src, dst);
                     }
                 });
