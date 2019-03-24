@@ -31,6 +31,45 @@ const a = {
 }
     `,
       options: [{ checkKey: "sameOrder" }]
+    },
+    {
+      code: `
+      const d = {
+        sameOrder: {
+          a: {
+            "1": "A",
+            "2": [
+              "a",
+              {
+                alpha: "hoge",
+                beta: "fuga",
+                gamma: {
+                  alpha: "hoge",
+                  beta: "fuga"
+                }
+              },
+              "c"
+            ]
+          },
+          b: {
+            "1": "A",
+            "2": [
+              "a",
+              {
+                alpha: "hoge",
+                beta: "fuga",
+                gamma: {
+                  alpha: "hoge",
+                  beta: "fuga"
+                }
+              },
+              "c"
+            ]
+          }
+        }
+      };
+      `,
+      options: [{ checkKey: "sameOrder" }]
     }
   ],
   invalid: [
@@ -78,6 +117,45 @@ const b = {
   }
 };      
     `,
+      options: [{ checkKey: "sameOrder" }],
+      errors: ["違うよ"]
+    },
+    {
+      code: `
+      const d = {
+        sameOrder: {
+          a: {
+            "1": "A",
+            "2": [
+              "a",
+              {
+                alpha: "hoge",
+                beta: "fuga",
+                gamma: {
+                  alpha: "hoge",
+                  beta: "fuga"
+                }
+              },
+              "c"
+            ]
+          },
+          b: {
+            "1": "A",
+            "2": [
+              "a",
+              {
+                alpha: "hoge",
+                beta: "fuga",
+                gamma: {
+                  beta: "fuga"
+                }
+              },
+              "c"
+            ]
+          }
+        }
+      };
+      `,
       options: [{ checkKey: "sameOrder" }],
       errors: ["違うよ"]
     }

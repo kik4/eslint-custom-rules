@@ -31,7 +31,7 @@ const checkSamePropKeysRecursive = (
         node: dst,
         message: "違うよ"
       });
-      return
+      return;
     }
 
     for (let j = 0; j < src.properties.length; j++) {
@@ -40,6 +40,35 @@ const checkSamePropKeysRecursive = (
         src.properties[j].value,
         dst.properties[j].value
       );
+    }
+  }
+
+  if (src.type === "ArrayExpression" && dst.type === "ArrayExpression") {
+    if (src.elements.length !== dst.elements.length) {
+      context.report({
+        node: dst,
+        message: "違うよ"
+      });
+      return;
+    }
+
+    for (let j = 0; j < src.elements.length; j++) {
+      const srcElement = src.elements[j],
+        dstElement = dst.elements[j];
+      if (srcElement.type !== dstElement.type) {
+        context.report({
+          node: dstElement,
+          message: "違うよ"
+        });
+        return;
+      }
+
+      if (
+        srcElement.type === "ObjectExpression" &&
+        dstElement.type === "ObjectExpression"
+      ) {
+        checkSamePropKeysRecursive(context, srcElement, dstElement);
+      }
     }
   }
 };

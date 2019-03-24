@@ -64,3 +64,38 @@ const c = {
     b: "hage"
   }
 };
+
+const d = {
+  sameOrder: {
+    a: {
+      "1": "A",
+      "2": [
+        "a",
+        {
+          alpha: "hoge",
+          beta: "fuga",
+          gamma: {
+            alpha: "hoge",
+            beta: "fuga"
+          }
+        },
+        "c"
+      ]
+    },
+    b: {
+      "1": "A",
+      "2": [
+        "a",
+        {
+          alpha: "hoge",
+          beta: "fuga",
+          gamma: {
+            alpha: "hoge",
+            beta: "fuga"
+          }
+        },
+        "c"
+      ]
+    }
+  }
+};
